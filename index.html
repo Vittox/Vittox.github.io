@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Victor Castro Quesada — Ciberseguridad y Cloud Security</title>
+<meta name="description" content="Portfolio de Victor Castro Quesada: estudiante del Grado en Ciberseguridad en ENTI – Universitat de Barcelona, administrador de sistemas y proyectos de Cloud Security en AWS y Azure.">
+<!-- Open Graph (LinkedIn, WhatsApp, Twitter) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Victor Castro Quesada — Ciberseguridad y Cloud Security">
+<meta property="og:description" content="Estudiante del Grado en Ciberseguridad en ENTI – Universitat de Barcelona. Proyectos reales: AWS VPC, IDS con Snort, autenticación JWT, IA con PyTorch.">
+<meta property="og:url" content="https://vittox.github.io">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Victor Castro Quesada — Ciberseguridad y Cloud Security">
+<meta name="twitter:description" content="Estudiante del Grado en Ciberseguridad en ENTI – Universitat de Barcelona. Proyectos reales en AWS, Snort, JWT y PyTorch.">
+<!-- Favicon SVG (iniciales VC) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230E5E73'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='system-ui,sans-serif' font-weight='700' font-size='13'%3EVC%3C/text%3E%3C/svg%3E">
+<script>
+/* Aplica el tema guardado antes de pintar la página para evitar parpadeo */
+(function(){
+  var th = localStorage.getItem("theme");
+  if(!th) th = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  document.documentElement.dataset.theme = th;
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   VICTOR CASTRO QUESADA — PORTFOLIO
+   Diseño: corporativo claro, tipografía Space Grotesk + IBM Plex
+   ============================================================ */
+:root{
+  --base:#F2F5F9;
+  --surface:#FFFFFF;
+  --ink:#16243A;
+  --muted:#5A6675;
+  --accent:#0E5E73;
+  --accent-bright:#1FA2C4;
+  --accent-soft:#E3F0F4;
+  --line:#DCE4ED;
+  --warn:#B3500F;
+  --ok:#1E7A4F;
+  --header-bg:rgba(242,245,249,.85);
+  --display:'Space Grotesk',sans-serif;
+  --body:'IBM Plex Sans',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --radius:14px;
+  --maxw:1120px;
+}
+html[data-theme="dark"]{
+  --base:#0B111B;
+  --surface:#141E2C;
+  --ink:#E8EEF6;
+  --muted:#9DAABA;
+  --accent:#2FA8CC;
+  --accent-bright:#5BC8E8;
+  --accent-soft:#0F2733;
+  --line:#26344A;
+  --warn:#E59B5C;
+  --ok:#53C28B;
+  --header-bg:rgba(11,17,27,.85);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--base);color:var(--ink);line-height:1.6;font-size:16px}
+::selection{background:var(--accent);color:#fff}
+a{color:var(--accent);text-decoration:none}
+a:hover{color:var(--accent-bright)}
+:focus-visible{outline:3px solid var(--accent-bright);outline-offset:3px;border-radius:4px}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* ---------- NAV ---------- */
+header{position:sticky;top:0;z-index:50;background:var(--header-bg);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--mono);font-weight:500;font-size:.95rem;color:var(--ink);letter-spacing:.05em}
+.logo b{color:var(--accent)}
+.nav-links{display:flex;gap:26px;align-items:center;list-style:none}
+.nav-links a{font-size:.88rem;font-weight:500;color:var(--muted)}
+.nav-links a:hover{color:var(--accent)}
+.lang-toggle{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
+.lang-toggle button{font-family:var(--mono);font-size:.75rem;padding:6px 12px;border:none;background:transparent;color:var(--muted);cursor:pointer;letter-spacing:.08em}
+.lang-toggle button.active{background:var(--accent);color:#fff}
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-family:var(--mono);font-size:.8rem;color:var(--ink);cursor:pointer}
+.theme-btn{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--muted);cursor:pointer;transition:color .15s ease,border-color .15s ease}
+.theme-btn:hover{color:var(--accent);border-color:var(--accent)}
+.theme-btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+html[data-theme="dark"] .icon-moon{display:none}
+html:not([data-theme="dark"]) .icon-sun{display:none}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+#net{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-inner{position:relative;display:grid;grid-template-columns:1.25fr 1fr;gap:48px;padding:84px 0 96px;align-items:center}
+.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:18px}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(2.4rem,5vw,3.6rem);line-height:1.05;letter-spacing:-.02em}
+.hero h1 span{color:var(--accent)}
+.hero .role{font-family:var(--display);font-weight:600;font-size:1.15rem;color:var(--muted);margin:16px 0 18px}
+.hero p.summary{max-width:54ch;color:var(--muted);margin-bottom:30px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-block;font-weight:600;font-size:.92rem;padding:12px 24px;border-radius:10px;transition:transform .15s ease,box-shadow .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 6px 18px rgba(14,94,115,.25)}
+.btn-primary:hover{color:#fff;background:var(--accent-bright)}
+.btn-ghost{border:1.5px solid var(--accent);color:var(--accent);background:var(--surface)}
+.facts{display:flex;gap:28px;margin-top:38px;flex-wrap:wrap}
+.fact .n{font-family:var(--display);font-weight:700;font-size:1.5rem;color:var(--ink)}
+.fact .l{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+
+/* status card */
+.console{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 20px 50px rgba(22,36,58,.10);overflow:hidden}
+.console-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--surface),var(--base))}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.dot.a{background:var(--accent)} .dot.b{background:var(--accent-bright)}
+.console-bar span{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin-left:6px}
+.console-body{padding:20px 22px;font-family:var(--mono);font-size:.82rem;line-height:2}
+.console-body .k{color:var(--muted)}
+.console-body .v{color:var(--ink);font-weight:500}
+.console-body .ok{color:var(--ok)} .console-body .run{color:var(--warn)}
+.cursor{display:inline-block;width:8px;height:14px;background:var(--accent);vertical-align:middle;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* ---------- SECTIONS ---------- */
+section{padding:88px 0}
+section:nth-of-type(even){background:var(--surface)}
+.sec-head{margin-bottom:46px}
+.sec-head .eyebrow{margin-bottom:10px}
+.sec-head h2{font-family:var(--display);font-weight:700;font-size:clamp(1.7rem,3vw,2.3rem);letter-spacing:-.01em}
+.sec-head p{color:var(--muted);max-width:62ch;margin-top:10px}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px}
+.about-grid p{color:var(--muted);margin-bottom:16px}
+.about-grid p strong{color:var(--ink)}
+.pill-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.pill{font-family:var(--mono);font-size:.74rem;background:var(--accent-soft);color:var(--accent);padding:7px 13px;border-radius:999px;letter-spacing:.03em}
+.side-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+section:nth-of-type(even) .side-card{background:var(--base)}
+.side-card h3{font-family:var(--display);font-size:1rem;margin-bottom:14px}
+.side-card ul{list-style:none}
+.side-card li{display:flex;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.9rem;color:var(--muted)}
+.side-card li:last-child{border:none}
+.side-card li::before{content:"//";font-family:var(--mono);color:var(--accent);font-size:.8rem}
+.about-right{display:flex;flex-direction:column;gap:20px}
+.avatar-ph{width:100%;aspect-ratio:1/1;max-height:240px;border-radius:var(--radius);background:var(--accent-soft);border:2px dashed var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:3rem;font-weight:700;color:var(--accent);letter-spacing:.04em;user-select:none}
+.avatar-img{width:100%;border-radius:var(--radius);display:block;object-fit:cover;aspect-ratio:1/1;max-height:240px}
+
+/* timeline */
+.timeline{position:relative;padding-left:30px;border-left:2px solid var(--line)}
+.t-item{position:relative;padding:0 0 40px 26px}
+.t-item:last-child{padding-bottom:0}
+.t-item::before{content:"";position:absolute;left:-9px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--surface);border:3px solid var(--accent)}
+.t-date{font-family:var(--mono);font-size:.74rem;color:var(--accent);letter-spacing:.08em}
+.t-item h3{font-family:var(--display);font-size:1.12rem;margin:6px 0 2px}
+.t-item .org{font-size:.9rem;color:var(--muted);font-style:italic;margin-bottom:10px}
+.t-item ul{list-style:none;color:var(--muted);font-size:.93rem}
+.t-item li{padding:3px 0 3px 18px;position:relative}
+.t-item li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:2px;background:var(--accent)}
+.t-tag{display:inline-block;font-family:var(--mono);font-size:.68rem;background:var(--accent-soft);color:var(--accent);padding:3px 10px;border-radius:999px;margin-left:8px;vertical-align:2px}
+
+/* education cards */
+.edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:50px}
+.edu{background:var(--base);border:1px solid var(--line);border-radius:var(--radius);padding:24px;transition:transform .15s ease,box-shadow .15s ease}
+section:nth-of-type(odd) .edu{background:var(--surface)}
+.edu:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(22,36,58,.08)}
+.edu .t-date{display:block;margin-bottom:8px}
+.edu h3{font-family:var(--display);font-size:1.02rem;line-height:1.3;margin-bottom:4px}
+.edu .org{font-size:.85rem;color:var(--muted);margin-bottom:10px}
+.edu p{font-size:.88rem;color:var(--muted)}
+
+/* projects */
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px}
+.filters button{font-family:var(--mono);font-size:.76rem;letter-spacing:.04em;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer;transition:all .15s ease}
+.filters button:hover{border-color:var(--accent);color:var(--accent)}
+.filters button.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
+.proj{display:flex;flex-direction:column;background:var(--base);border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+section:nth-of-type(odd) .proj{background:var(--surface)}
+.proj:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(22,36,58,.10);border-color:var(--accent-bright)}
+.proj-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.proj-cat{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.badge{font-family:var(--mono);font-size:.66rem;padding:4px 10px;border-radius:999px;letter-spacing:.05em}
+.badge.planned{background:#EEF1F6;color:var(--muted);border:1px solid var(--line)}
+.badge.progress{background:#FCF0E4;color:var(--warn);border:1px solid #F0D9C2}
+.badge.done{background:#E5F3EC;color:var(--ok);border:1px solid #C8E5D6}
+html[data-theme="dark"] .badge.planned{background:#1B2636;border-color:var(--line)}
+html[data-theme="dark"] .badge.progress{background:#33250F;border-color:#4A3A1E}
+html[data-theme="dark"] .badge.done{background:#10301F;border-color:#1E4A33}
+.proj h3{font-family:var(--display);font-size:1.1rem;line-height:1.3;margin-bottom:10px}
+.proj p{font-size:.9rem;color:var(--muted);flex:1}
+.proj .tech{display:flex;flex-wrap:wrap;gap:7px;margin:16px 0}
+.proj .tech span{font-family:var(--mono);font-size:.68rem;background:var(--accent-soft);color:var(--accent);padding:4px 9px;border-radius:6px}
+.proj .links a{font-family:var(--mono);font-size:.78rem;font-weight:500}
+.proj .links .soon{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.proj .links a::after{content:" \2197"}
+.proj.featured{grid-column:1/-1;border:1.5px solid var(--accent);box-shadow:0 14px 36px rgba(14,94,115,.12)}
+.proj.featured h3{font-size:1.3rem}
+.feat-tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;background:var(--accent);color:#fff;padding:4px 10px;border-radius:999px;margin-right:8px}
+
+/* skills */
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.skill-box{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+section:nth-of-type(even) .skill-box{background:var(--base)}
+.skill-box h3{font-family:var(--display);font-size:1rem;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.skill-box h3::before{content:"";width:8px;height:8px;background:var(--accent);border-radius:2px;transform:rotate(45deg)}
+.skill-box .lvl{font-family:var(--mono);font-size:.68rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
+.skill-box .tags{display:flex;flex-wrap:wrap;gap:8px}
+.skill-box .tags span{font-size:.8rem;background:var(--accent-soft);color:var(--accent);padding:5px 12px;border-radius:8px;font-weight:500}
+
+/* roadmap */
+.roadmap{display:flex;gap:0;flex-wrap:wrap;margin-top:10px}
+.step{flex:1;min-width:170px;position:relative;padding:22px 18px 22px 26px;background:var(--base);border:1px solid var(--line);border-left:4px solid var(--accent)}
+section:nth-of-type(odd) .step{background:var(--surface)}
+.step+.step{margin-left:-1px}
+.step .n{font-family:var(--mono);font-size:.68rem;color:var(--accent);letter-spacing:.1em}
+.step h4{font-family:var(--display);font-size:.95rem;margin:6px 0 4px}
+.step p{font-size:.8rem;color:var(--muted)}
+
+/* resources */
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.res-col{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+section:nth-of-type(even) .res-col{background:var(--base)}
+.res-col h3{font-family:var(--display);font-size:1rem;margin-bottom:16px;color:var(--accent)}
+.res-col ul{list-style:none}
+.res-col li{padding:9px 0;border-bottom:1px dashed var(--line)}
+.res-col li:last-child{border:none}
+.res-col a{font-weight:500;font-size:.92rem}
+.res-col li p{font-size:.8rem;color:var(--muted);margin-top:2px}
+
+/* contact */
+.contact-wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:start}
+.c-meta{list-style:none;margin:4px 0 30px}
+.c-meta li{display:flex;align-items:center;gap:14px;padding:11px 0;border-bottom:1px dashed var(--line);color:var(--muted);font-size:.93rem}
+.c-meta li:last-child{border:none}
+.c-meta svg{width:19px;height:19px;flex-shrink:0;color:var(--accent)}
+.c-list{display:flex;flex-direction:column;gap:14px}
+a.c-row{display:flex;align-items:center;gap:18px;padding:18px 22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);color:var(--ink);transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+section:nth-of-type(even) a.c-row{background:var(--base)}
+a.c-row:hover{transform:translateY(-3px);border-color:var(--accent-bright);box-shadow:0 12px 28px rgba(22,36,58,.10);color:var(--ink)}
+.c-ico{display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:11px;background:var(--accent-soft);color:var(--accent);flex-shrink:0}
+.c-ico svg{width:21px;height:21px}
+.c-row .lab{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.c-row .val{font-weight:600;font-size:.95rem;word-break:break-all}
+.c-row .arrow{margin-left:auto;font-family:var(--mono);font-size:1.05rem;color:var(--accent)}
+
+footer{border-top:1px solid var(--line);padding:48px 0 0;background:var(--surface)}
+.foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:40px;padding-bottom:36px}
+.foot-brand .name{font-family:var(--display);font-weight:700;font-size:1.4rem;letter-spacing:-.01em}
+.foot-brand .name span{color:var(--accent)}
+.foot-brand p{font-size:.85rem;color:var(--muted);max-width:32ch;margin-top:6px}
+.foot-social{display:flex;gap:12px;margin-top:16px}
+.foot-social a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--line);border-radius:8px;color:var(--muted);transition:color .15s ease,border-color .15s ease,transform .15s ease}
+.foot-social a:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
+.foot-social svg{width:17px;height:17px;fill:currentColor}
+.foot-cols{display:flex;gap:64px;flex-wrap:wrap}
+.foot-col h4{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin-bottom:14px}
+.foot-col ul{list-style:none}
+.foot-col li{padding:4px 0}
+.foot-col a{font-size:.88rem;color:var(--muted)}
+.foot-col a:hover{color:var(--accent)}
+.foot-bottom{border-top:1px solid var(--line);padding:18px 0;text-align:center}
+.foot-bottom p{font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:920px){
+  .hero-inner{grid-template-columns:1fr;padding:60px 0 70px}
+  .console{max-width:520px}
+  .about-grid{grid-template-columns:1fr}
+  .edu-grid,.res-grid{grid-template-columns:1fr}
+  .contact-wrap{grid-template-columns:1fr}
+  .foot-grid{flex-direction:column;gap:32px}
+  .nav-links{position:absolute;top:64px;left:0;right:0;background:var(--surface);border-bottom:1px solid var(--line);flex-direction:column;padding:18px 24px;gap:16px;display:none;align-items:flex-start}
+  .nav-links.open{display:flex}
+  .menu-btn{display:block}
+}
+@media (max-width:540px){
+  section{padding:64px 0}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo">victor<b>@</b>castro:<b>~$</b></div>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">MENU</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" data-i18n="nav_about"></a></li>
+      <li><a href="#experience" data-i18n="nav_exp"></a></li>
+      <li><a href="#projects" data-i18n="nav_proj"></a></li>
+      <li><a href="#skills" data-i18n="nav_skills"></a></li>
+      <li><a href="#resources" data-i18n="nav_res"></a></li>
+      <li><a href="#contact" data-i18n="nav_contact"></a></li>
+      <li>
+        <div class="lang-toggle" role="group" aria-label="Idioma / Language">
+          <button id="btnEs" class="active" onclick="setLang('es')">ES</button>
+          <button id="btnEn" onclick="setLang('en')">EN</button>
+        </div>
+      </li>
+      <li>
+        <button class="theme-btn" id="themeBtn" aria-label="Cambiar tema / Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<div class="hero">
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="container hero-inner">
+    <div>
+      <div class="eyebrow" data-i18n="hero_eyebrow"></div>
+      <h1>Victor Castro <span>Quesada</span></h1>
+      <div class="role" data-i18n="hero_role"></div>
+      <p class="summary" data-i18n="hero_summary"></p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://github.com/Vittox" target="_blank" rel="noopener" data-i18n="hero_cta1"></a>
+        <a class="btn btn-ghost" href="#contact" data-i18n="hero_cta2"></a>
+      </div>
+      <div class="facts">
+        <div class="fact"><div class="n">3</div><div class="l" data-i18n="fact1"></div></div>
+        <div class="fact"><div class="n">2+</div><div class="l" data-i18n="fact2"></div></div>
+        <div class="fact"><div class="n">ES · CA · EN</div><div class="l" data-i18n="fact3"></div></div>
+      </div>
+    </div>
+    <div class="console reveal">
+      <div class="console-bar"><div class="dot a"></div><div class="dot b"></div><div class="dot"></div><span>victor@cloudsec — status</span></div>
+      <div class="console-body">
+        <div><span class="k">$ whoami</span></div>
+        <div><span class="v">victor.castro</span> <span class="k">· Barcelona, ES</span></div>
+        <div><span class="k">$ current --focus</span></div>
+        <div><span class="v" data-i18n="con_focus"></span></div>
+        <div><span class="k">$ status</span></div>
+        <div><span class="ok">[OK]</span> <span class="v" data-i18n="con_ok"></span></div>
+        <div><span class="run">[RUN]</span> <span class="v" data-i18n="con_run"></span> <span class="cursor"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="eyebrow">01</div>
+      <h2 data-i18n="about_title"></h2>
+    </div>
+    <div class="about-grid">
+      <div class="reveal">
+        <p data-i18n="about_p1"></p>
+        <p data-i18n="about_p2"></p>
+        <p data-i18n="about_p3"></p>
+        <div class="pill-list">
+          <span class="pill">AWS</span><span class="pill">Azure</span><span class="pill">Active Directory</span>
+          <span class="pill">Linux</span><span class="pill">Terraform</span><span class="pill">SIEM</span>
+          <span class="pill">Kali Linux</span><span class="pill">Bash / PowerShell</span>
+        </div>
+      </div>
+      <div class="about-right reveal">
+        <!-- FOTO: cuando tengas tu foto profesional, reemplaza el div.avatar-ph por: -->
+        <!-- <img src="tu-foto.jpg" alt="Victor Castro Quesada" class="avatar-img"> -->
+        <div class="avatar-ph"><span>VC</span></div>
+        <div class="side-card">
+          <h3 data-i18n="about_now_title"></h3>
+          <ul>
+            <li data-i18n="about_now1"></li>
+            <li data-i18n="about_now2"></li>
+            <li data-i18n="about_now3"></li>
+            <li data-i18n="about_now4"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE + EDUCATION ================= -->
+<section id="experience">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="eyebrow">02</div>
+      <h2 data-i18n="exp_title"></h2>
+    </div>
+    <div class="timeline">
+      <div class="t-item reveal">
+        <span class="t-date">02/2025 – 01/2026</span><span class="t-tag" data-i18n="exp_tag_retail"></span>
+        <h3 data-i18n="exp2_role"></h3>
+        <div class="org">Carrefour España · La Casa de las Carcasas</div>
+        <ul><li data-i18n="exp2_b1"></li></ul>
+      </div>
+      <div class="t-item reveal">
+        <span class="t-date">02/2024 – 06/2024</span><span class="t-tag" data-i18n="exp_tag_it"></span>
+        <h3 data-i18n="exp1_role"></h3>
+        <div class="org">Nedschroef Barcelona S.A.</div>
+        <ul>
+          <li data-i18n="exp1_b1"></li>
+          <li data-i18n="exp1_b2"></li>
+          <li data-i18n="exp1_b3"></li>
+          <li data-i18n="exp1_b4"></li>
+        </ul>
+      </div>
+      <div class="t-item reveal">
+        <span class="t-date">10/2021 – 03/2022</span><span class="t-tag" data-i18n="exp_tag_it"></span>
+        <h3 data-i18n="exp3_role"></h3>
+        <div class="org">Escola Pere IV — Barcelona</div>
+        <ul><li data-i18n="exp3_b1"></li></ul>
+      </div>
+    </div>
+
+    <div class="edu-grid">
+      <div class="edu reveal">
+        <span class="t-date">2024 — <span data-i18n="edu_now"></span></span>
+        <h3 data-i18n="edu1_title"></h3>
+        <div class="org">ENTI – Universitat de Barcelona</div>
+        <p data-i18n="edu1_desc"></p>
+      </div>
+      <div class="edu reveal">
+        <span class="t-date">2022 — 2024</span>
+        <h3 data-i18n="edu2_title"></h3>
+        <div class="org">Escola Jesuïtes El Clot</div>
+        <p data-i18n="edu2_desc"></p>
+      </div>
+      <div class="edu reveal">
+        <span class="t-date">2020 — 2022</span>
+        <h3 data-i18n="edu3_title"></h3>
+        <div class="org">Escola Jesuïtes El Clot</div>
+        <p data-i18n="edu3_desc"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="eyebrow">03</div>
+      <h2 data-i18n="proj_title"></h2>
+      <p data-i18n="proj_sub"></p>
+    </div>
+    <div class="filters reveal" id="filters"></div>
+    <div class="proj-grid" id="projGrid"></div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="eyebrow">04</div>
+      <h2 data-i18n="skills_title"></h2>
+    </div>
+    <div class="skill-grid" id="skillGrid"></div>
+
+    <div class="sec-head reveal" style="margin-top:70px">
+      <div class="eyebrow" data-i18n="road_eyebrow"></div>
+      <h2 data-i18n="road_title"></h2>
+      <p data-i18n="road_sub"></p>
+    </div>
+    <div class="roadmap reveal" id="roadmap"></div>
+  </div>
+</section>
+
+<!-- ================= RESOURCES ================= -->
+<section id="resources">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="eyebrow">05</div>
+      <h2 data-i18n="res_title"></h2>
+      <p data-i18n="res_sub"></p>
+    </div>
+    <div class="res-grid" id="resGrid"></div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="eyebrow">06</div>
+      <h2 data-i18n="contact_title"></h2>
+      <p data-i18n="contact_sub"></p>
+    </div>
+    <div class="contact-wrap">
+      <div class="reveal">
+        <ul class="c-meta">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span data-i18n="c_loc"></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            <span data-i18n="c_resp"></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+            <span data-i18n="c_langs"></span>
+          </li>
+        </ul>
+        <a class="btn btn-primary" href="mailto:vicaqu.lobby@gmail.com" data-i18n="contact_cta"></a>
+      </div>
+      <div class="c-list reveal">
+        <a class="c-row" href="mailto:vicaqu.lobby@gmail.com">
+          <span class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+          <span><span class="lab">Email</span><br><span class="val">vicaqu.lobby@gmail.com</span></span>
+          <span class="arrow">&#8599;</span>
+        </a>
+        <a class="c-row" href="https://www.linkedin.com/in/victor-castro-quesada-90307829b/" target="_blank" rel="noopener">
+          <span class="c-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></span>
+          <span><span class="lab">LinkedIn</span><br><span class="val">Victor Castro Quesada</span></span>
+          <span class="arrow">&#8599;</span>
+        </a>
+        <a class="c-row" href="https://github.com/Vittox" target="_blank" rel="noopener">
+          <span class="c-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.16 1.18a11 11 0 0 1 5.76 0c2.19-1.49 3.15-1.18 3.15-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.26 5.67.41.36.78 1.05.78 2.12 0 1.53-.02 2.76-.02 3.14 0 .3.21.67.8.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg></span>
+          <span><span class="lab">GitHub</span><br><span class="val">github.com/Vittox</span></span>
+          <span class="arrow">&#8599;</span>
+        </a>
+        <a class="c-row" href="CV_Victor_Castro_Quesada.pdf" download>
+          <span class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 11v6"/><path d="m9 14.5 3 3 3-3"/></svg></span>
+          <span><span class="lab" data-i18n="c_cv_lab"></span><br><span class="val" data-i18n="c_cv_val"></span></span>
+          <span class="arrow">&#8595;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="name">Victor <span>Castro</span></div>
+        <p data-i18n="foot_tag"></p>
+        <div class="foot-social">
+          <a href="https://www.linkedin.com/in/victor-castro-quesada-90307829b/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          </a>
+          <a href="https://github.com/Vittox" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.16 1.18a11 11 0 0 1 5.76 0c2.19-1.49 3.15-1.18 3.15-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.26 5.67.41.36.78 1.05.78 2.12 0 1.53-.02 2.76-.02 3.14 0 .3.21.67.8.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+          </a>
+          <a href="mailto:vicaqu.lobby@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2v.51L12 12 4 6.51V6h16zM4 18V9.04l7.43 5.06a1 1 0 0 0 1.14 0L20 9.04V18H4z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4 data-i18n="foot_proj"></h4>
+          <ul>
+            <li><a href="https://github.com/Vittox/aws-vpc-security-lab" target="_blank" rel="noopener">AWS VPC Security Lab</a></li>
+            <li><a href="https://github.com/Vittox/mini-zone-based-firewall" target="_blank" rel="noopener">Mini Zone-Based Firewall</a></li>
+            <li><a href="https://github.com/Vittox/snort-ids-lab" target="_blank" rel="noopener">Snort IDS Lab</a></li>
+            <li><a href="https://github.com/Vittox/secure-auth-jwt" target="_blank" rel="noopener">Secure Auth (JWT)</a></li>
+            <li><a href="https://github.com/Vittox/pytorch-lm-training" target="_blank" rel="noopener">PyTorch LM Training</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4 data-i18n="foot_menu"></h4>
+          <ul>
+            <li><a href="#about" data-i18n="nav_about"></a></li>
+            <li><a href="#experience" data-i18n="nav_exp"></a></li>
+            <li><a href="#projects" data-i18n="nav_proj"></a></li>
+            <li><a href="#skills" data-i18n="nav_skills"></a></li>
+            <li><a href="#contact" data-i18n="nav_contact"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>© <span id="year"></span> Victor Castro Quesada. <span data-i18n="foot_rights"></span></p>
+  </div>
+</footer>
+
+<script>
+/* ==========================================================================
+   CÓMO AÑADIR UN PROYECTO NUEVO (de tu GitHub real)
+   --------------------------------------------------------------------------
+   1. Copia uno de los objetos del array PROJECTS de abajo y pégalo al final.
+   2. Rellena:
+      - cat:      "cloud" | "blue" | "dev" | "ml"   (categoría del filtro)
+      - status:   "planned" | "progress" | "done"   (Planificado / En curso / Completado)
+      - featured: true solo para el proyecto principal (ocupa todo el ancho)
+      - title:    { es: "...", en: "..." }
+      - desc:     { es: "...", en: "..." }
+      - tech:     ["Herramienta1", "Herramienta2", ...]
+      - repo:     "https://github.com/Vittox/nombre-del-repo"
+   3. Guarda el archivo y haz commit + push. Nada más.
+   ========================================================================== */
+const PROJECTS = [
+  {
+    cat: "cloud", status: "progress", featured: true,
+    title: { es: "Arquitectura segura en AWS: VPC, EC2 y Security Groups", en: "Secure AWS architecture: VPC, EC2 and Security Groups" },
+    desc: {
+      es: "Mi proyecto principal actual: diseño y despliegue de una cuenta de AWS con una VPC y una subred pública donde corre una instancia EC2, envuelta en un Security Group que actúa como firewall de instancia con reglas de mínima exposición. Todo el conjunto vive dentro de una región y se conecta a Internet a través de un Internet Gateway como único punto de entrada. El objetivo es documentar paso a paso una línea base de red segura en la nube.",
+      en: "My current flagship project: design and deployment of an AWS account with a VPC and a public subnet running an EC2 instance, wrapped in a Security Group acting as an instance-level firewall with least-exposure rules. Everything lives inside a single region and reaches the Internet through an Internet Gateway as the only entry point. The goal is to document a secure cloud network baseline step by step."
+    },
+    tech: ["AWS", "VPC", "EC2", "Security Groups", "Internet Gateway", "Subnetting"],
+    repo: "https://github.com/Vittox/aws-vpc-security-lab"
+  },
+  {
+    cat: "blue", status: "planned",
+    title: { es: "Mini Zone-Based Firewall", en: "Mini zone-based firewall" },
+    desc: {
+      es: "Implementación a pequeña escala de un firewall por zonas: segmentación de la red en zonas (LAN, WAN, DMZ), políticas de tráfico entre zonas e inspección de paquetes, con la configuración y los casos de prueba documentados.",
+      en: "Small-scale zone-based firewall implementation: network segmentation into zones (LAN, WAN, DMZ), inter-zone traffic policies and packet inspection, with documented configuration and test cases."
+    },
+    tech: ["Firewall", "LAN / WAN / DMZ", "ACL", "Networking"],
+    repo: "https://github.com/Vittox/mini-zone-based-firewall"
+  },
+  {
+    cat: "blue", status: "planned",
+    title: { es: "Sistema IDS con Snort", en: "IDS with Snort" },
+    desc: {
+      es: "Despliegue de un sistema de detección de intrusiones con Snort: escritura de reglas personalizadas, detección de escaneos y ataques comunes sobre tráfico de laboratorio y análisis de las alertas generadas.",
+      en: "Intrusion detection system built with Snort: custom rule writing, detection of scans and common attacks on lab traffic, and analysis of the generated alerts."
+    },
+    tech: ["Snort", "IDS", "PCAP", "Linux"],
+    repo: "https://github.com/Vittox/snort-ids-lab"
+  },
+  {
+    cat: "dev", status: "planned",
+    title: { es: "Sistema de autenticación seguro (JWT + roles)", en: "Secure authentication system (JWT + roles)" },
+    desc: {
+      es: "API con registro e inicio de sesión seguros: tokens JWT firmados, control de acceso basado en roles (RBAC), almacenamiento de contraseñas con hashing robusto y defensas frente a los fallos de autenticación del OWASP Top 10.",
+      en: "API with secure sign-up and login: signed JWT tokens, role-based access control (RBAC), strong password hashing and defences against OWASP Top 10 authentication flaws."
+    },
+    tech: ["JWT", "RBAC", "REST API", "OWASP"],
+    repo: "https://github.com/Vittox/secure-auth-jwt"
+  },
+  {
+    cat: "ml", status: "progress",
+    title: { es: "Entrenamiento de modelos de lenguaje con PyTorch", en: "Language model training with PyTorch" },
+    desc: {
+      es: "Entrenamiento de modelos de lenguaje (LM) con PyTorch acelerado por GPU NVIDIA: preparación de datasets, bucles de entrenamiento sobre CUDA, ajuste de hiperparámetros y evaluación de los modelos resultantes.",
+      en: "Language model (LM) training with PyTorch accelerated on NVIDIA GPUs: dataset preparation, CUDA training loops, hyperparameter tuning and evaluation of the resulting models."
+    },
+    tech: ["Python", "PyTorch", "CUDA", "NVIDIA GPU"],
+    repo: "https://github.com/Vittox/pytorch-lm-training"
+  }
+];
+
+/* ---------- DICCIONARIO DE TRADUCCIONES ---------- */
+const I18N = {
+es: {
+  nav_about:"Sobre mí", nav_exp:"Trayectoria", nav_proj:"Proyectos", nav_skills:"Habilidades", nav_res:"Recursos", nav_contact:"Contacto",
+  hero_eyebrow:"Barcelona · Universitat de Barcelona · Cloud Security",
+  hero_role:"Estudiante del Grado en Ciberseguridad en ENTI – Universitat de Barcelona y Administrador de Sistemas, especializándome en seguridad en la nube",
+  hero_summary:"He completado 2º curso del grado y empiezo 3º. Combino experiencia real administrando infraestructura Windows, Linux y Azure con formación universitaria en ciberseguridad. Construyo en público: cada proyecto de este portfolio está en mi GitHub.",
+  hero_cta1:"Ver mi GitHub", hero_cta2:"Contactar",
+  fact1:"Titulaciones IT", fact2:"Años de experiencia IT", fact3:"Idiomas",
+  con_focus:"Cloud Security (AWS / Azure)",
+  con_ok:"Sysadmin · AD · Azure · Redes · Python",
+  con_run:"Grado en Ciberseguridad (UB) — rumbo a 3er curso",
+  about_title:"Sobre mí",
+  about_p1:"Estudio el Grado en Ciberseguridad en ENTI – Universitat de Barcelona: acabo de completar el 2º curso y este año empiezo 3º. Llegué a la universidad con un Grado Superior en Administración de Sistemas en Red (ASIX) y un Grado Medio en Sistemas Microinformáticos, y con experiencia real: en Nedschroef Barcelona gestioné Active Directory, copias de seguridad y servicios en Azure, además de dar soporte de nivel 1 y 2.",
+  about_p2:"Ese recorrido marca mi forma de entender la seguridad: primero comprender cómo funciona la infraestructura, después aprender a protegerla y atacarla en entornos controlados. Tras dos años de grado he trabajado criptografía, análisis forense, seguridad web y de redes, y seguridad ofensiva con las herramientas estándar del sector. Mi objetivo es especializarme en Cloud Security, y este portfolio documenta ese camino con proyectos reales que voy publicando en GitHub.",
+  about_p3:"Busco prácticas o una primera posición en ciberseguridad o administración de sistemas con foco en seguridad, donde aportar una base poco habitual en un perfil junior: sistemas, redes, trato con usuarios y documentación rigurosa.",
+  about_now_title:"En qué estoy ahora",
+  about_now1:"Empezando 3er curso del Grado en Ciberseguridad en ENTI – Universitat de Barcelona, tras completar 2º",
+  about_now2:"Proyecto principal: arquitectura segura en AWS — una VPC con subred pública y una instancia EC2 protegida por un Security Group, con un Internet Gateway como único punto de entrada a la región",
+  about_now3:"Publicando gradualmente mis proyectos reales en GitHub: firewall por zonas, IDS con Snort, autenticación con JWT y entrenamiento de modelos con PyTorch",
+  about_now4:"Preparando las certificaciones AZ-900 / SC-900 y practicando en TryHackMe y Hack The Box",
+  exp_title:"Trayectoria",
+  exp_tag_it:"IT", exp_tag_retail:"Retail",
+  exp1_role:"Administrador de Sistemas / Técnico Help Desk",
+  exp1_b1:"Administración de la infraestructura IT de planta: servidores locales y servicios cloud en Microsoft Azure.",
+  exp1_b2:"Gestión de Active Directory: usuarios, grupos, permisos y políticas (GPO) con principio de mínimo privilegio.",
+  exp1_b3:"Diseño y supervisión de copias de seguridad y procedimientos de recuperación de servicios críticos.",
+  exp1_b4:"Soporte de nivel 1 y 2 y documentación de incidencias y procedimientos, reduciendo tiempos de resolución.",
+  exp2_role:"Auxiliar de Ventas y Atención al Cliente",
+  exp2_b1:"Atención al cliente en entorno de alta demanda: comunicación con perfiles no técnicos, gestión de incidencias y orientación a resultados, competencias transferibles al soporte IT y la respuesta a incidentes.",
+  exp3_role:"Técnico de Incidencias Informáticas",
+  exp3_b1:"Resolución de incidencias, instalación y configuración de software y mantenimiento preventivo y correctivo del parque informático del centro educativo.",
+  edu_now:"Actualidad",
+  edu1_title:"Grado Universitario en Ciberseguridad — Universitat de Barcelona",
+  edu1_desc:"2º curso completado, iniciando 3º. Criptografía, seguridad de redes, hacking ético, análisis forense, seguridad web, arquitectura de sistemas, IA aplicada, gestión de riesgos y cumplimiento (RGPD, LOPDGDD, ENS).",
+  edu2_title:"G.S. Administración de Sistemas Informáticos en Red (ASIX)",
+  edu2_desc:"Windows Server y Linux, servicios de red (AD, DNS, DHCP, Apache, Nginx), bases de datos, virtualización y despliegues en AWS y Azure.",
+  edu3_title:"G.M. Sistemas Microinformáticos y Redes (SMX)",
+  edu3_desc:"Fundamentos de sistemas operativos, redes TCP/IP, hardware y montaje y mantenimiento de equipos.",
+  proj_title:"Proyectos",
+  proj_sub:"Proyectos reales de mi GitHub que voy añadiendo gradualmente al portfolio a medida que avanzan. Cada repositorio incluye documentación, decisiones técnicas y lecciones aprendidas.",
+  f_all:"Todos", f_cloud:"Cloud Security", f_blue:"Defensa y redes", f_dev:"Desarrollo seguro", f_ml:"IA / ML",
+  st_planned:"Planificado", st_progress:"En curso", st_done:"Completado",
+  feat_lbl:"Proyecto principal",
+  repo_link:"Ver en GitHub", repo_soon:"Próximamente en GitHub",
+  skills_title:"Habilidades técnicas",
+  lvl_pro:"Experiencia profesional", lvl_acad:"Formación + laboratorio", lvl_learn:"En desarrollo activo",
+  road_eyebrow:"Hoja de ruta", road_title:"Certificaciones",
+  road_sub:"Plan de certificación orientado a un perfil de Cloud Security. Se actualizará a medida que las vaya obteniendo.",
+  road1t:"AZ-900 / SC-900", road1d:"Fundamentos de Azure y de seguridad, identidad y cumplimiento de Microsoft.",
+  road2t:"AWS Cloud Practitioner", road2d:"Fundamentos del ecosistema AWS y su modelo de responsabilidad compartida.",
+  road3t:"CompTIA Security+", road3d:"Base transversal de seguridad reconocida internacionalmente.",
+  road4t:"AZ-500 / SC-200", road4d:"Especialización: ingeniería de seguridad en Azure y operaciones de seguridad.",
+  step_lbl:"Fase",
+  res_title:"Recursos que recomiendo",
+  res_sub:"Plataformas con las que practico y aprendo. Si estás empezando en ciberseguridad, son un buen punto de partida.",
+  res_c1:"Práctica general", res_c2:"Seguridad en la nube", res_c3:"Referencia y comunidad",
+  contact_title:"Contacto",
+  contact_sub:"Abierto a prácticas, posiciones junior y colaboraciones en ciberseguridad y administración de sistemas.",
+  c_loc:"Barcelona, España · presencial, híbrido o remoto",
+  c_resp:"Respuesta en menos de 24 horas",
+  c_langs:"Español y catalán nativos · Inglés (B2)",
+  contact_cta:"Escríbeme un correo",
+  c_cv_lab:"Currículum",
+  c_cv_val:"Descargar CV (PDF)",
+  foot_tag:"Estudiante de Ciberseguridad en ENTI – Universitat de Barcelona, especializándome en Cloud Security.",
+  foot_proj:"Proyectos", foot_menu:"Menú",
+  foot_rights:"Todos los derechos reservados."
+},
+en: {
+  nav_about:"About", nav_exp:"Background", nav_proj:"Projects", nav_skills:"Skills", nav_res:"Resources", nav_contact:"Contact",
+  hero_eyebrow:"Barcelona · University of Barcelona · Cloud Security",
+  hero_role:"Cybersecurity degree student at ENTI – University of Barcelona and Systems Administrator, specialising in cloud security",
+  hero_summary:"I have completed the 2nd year of my degree and I am starting the 3rd. I combine hands-on experience managing Windows, Linux and Azure infrastructure with a university degree in cybersecurity. I build in public: every project in this portfolio is on my GitHub.",
+  hero_cta1:"View my GitHub", hero_cta2:"Get in touch",
+  fact1:"IT qualifications", fact2:"Years of IT experience", fact3:"Languages",
+  con_focus:"Cloud Security (AWS / Azure)",
+  con_ok:"Sysadmin · AD · Azure · Networking · Python",
+  con_run:"Cybersecurity degree (UB) — heading into 3rd year",
+  about_title:"About me",
+  about_p1:"I study Cybersecurity at ENTI – University of Barcelona: I have just completed the 2nd year and I am starting the 3rd. I arrived at university with a Higher Vocational Degree in Networked Systems Administration (ASIX), a vocational degree in Microcomputer Systems and real-world experience: at Nedschroef Barcelona I managed Active Directory, backups and Azure services, while providing level 1 and 2 support.",
+  about_p2:"That background shapes how I approach security: first understand how the infrastructure works, then learn to defend it and attack it in controlled environments. After two years of the degree I have worked on cryptography, digital forensics, web and network security, and offensive security with the industry-standard tooling. My goal is to specialise in Cloud Security, and this portfolio documents that journey through real projects published on GitHub.",
+  about_p3:"I am looking for an internship or a first role in cybersecurity or security-focused systems administration, where I can bring an unusual combination for a junior profile: systems, networking, user-facing experience and rigorous documentation.",
+  about_now_title:"What I'm working on",
+  about_now1:"Starting the 3rd year of the Cybersecurity degree at ENTI – University of Barcelona, after completing the 2nd",
+  about_now2:"Flagship project: secure AWS architecture — a VPC with a public subnet and an EC2 instance protected by a Security Group, with an Internet Gateway as the single entry point into the region",
+  about_now3:"Gradually publishing my real projects on GitHub: zone-based firewall, Snort IDS, JWT authentication and model training with PyTorch",
+  about_now4:"Preparing the AZ-900 / SC-900 certifications and practising on TryHackMe and Hack The Box",
+  exp_title:"Background",
+  exp_tag_it:"IT", exp_tag_retail:"Retail",
+  exp1_role:"Systems Administrator / Help Desk Technician",
+  exp1_b1:"Managed the plant's IT infrastructure: on-premises servers and cloud services on Microsoft Azure.",
+  exp1_b2:"Administered Active Directory: users, groups, permissions and Group Policy, applying least privilege.",
+  exp1_b3:"Designed and supervised backups and recovery procedures for critical services.",
+  exp1_b4:"Provided level 1 and 2 support and documented incidents and procedures, reducing resolution times.",
+  exp2_role:"Sales Assistant & Customer Service",
+  exp2_b1:"Customer service in a high-demand environment: communicating with non-technical people, handling incidents and working to targets — skills that transfer directly to IT support and incident response.",
+  exp3_role:"IT Incident Technician",
+  exp3_b1:"Resolved incidents, installed and configured software, and performed preventive and corrective hardware maintenance across the school's IT estate.",
+  edu_now:"Present",
+  edu1_title:"BSc in Cybersecurity — University of Barcelona",
+  edu1_desc:"2nd year completed, starting the 3rd. Cryptography, network security, ethical hacking, digital forensics, web security, systems architecture, applied AI, risk management and compliance (GDPR, Spanish LOPDGDD and ENS).",
+  edu2_title:"Higher Vocational Degree in Networked Systems Administration (ASIX)",
+  edu2_desc:"Windows Server and Linux, network services (AD, DNS, DHCP, Apache, Nginx), databases, virtualisation and deployments on AWS and Azure.",
+  edu3_title:"Vocational Degree in Microcomputer Systems and Networks (SMX)",
+  edu3_desc:"Operating system fundamentals, TCP/IP networking, hardware, and computer assembly and maintenance.",
+  proj_title:"Projects",
+  proj_sub:"Real projects from my GitHub, added gradually to the portfolio as they progress. Each repository includes documentation, technical decisions and lessons learned.",
+  f_all:"All", f_cloud:"Cloud Security", f_blue:"Defense & networks", f_dev:"Secure development", f_ml:"AI / ML",
+  st_planned:"Planned", st_progress:"In progress", st_done:"Completed",
+  feat_lbl:"Flagship project",
+  repo_link:"View on GitHub", repo_soon:"Coming soon on GitHub",
+  skills_title:"Technical skills",
+  lvl_pro:"Professional experience", lvl_acad:"Education + lab work", lvl_learn:"Actively developing",
+  road_eyebrow:"Roadmap", road_title:"Certifications",
+  road_sub:"Certification plan aimed at a Cloud Security profile. It will be updated as I earn them.",
+  road1t:"AZ-900 / SC-900", road1d:"Microsoft fundamentals: Azure, security, identity and compliance.",
+  road2t:"AWS Cloud Practitioner", road2d:"AWS ecosystem fundamentals and the shared responsibility model.",
+  road3t:"CompTIA Security+", road3d:"Internationally recognised cross-domain security foundation.",
+  road4t:"AZ-500 / SC-200", road4d:"Specialisation: Azure security engineering and security operations.",
+  step_lbl:"Phase",
+  res_title:"Resources I recommend",
+  res_sub:"Platforms I use to practise and learn. If you are getting started in cybersecurity, they are a great entry point.",
+  res_c1:"General practice", res_c2:"Cloud security", res_c3:"Reference & community",
+  contact_title:"Contact",
+  contact_sub:"Open to internships, junior roles and collaborations in cybersecurity and systems administration.",
+  c_loc:"Barcelona, Spain · on-site, hybrid or remote",
+  c_resp:"I reply within 24 hours",
+  c_langs:"Native Spanish and Catalan · English (B2)",
+  contact_cta:"Send me an email",
+  c_cv_lab:"Résumé",
+  c_cv_val:"Download CV (PDF)",
+  foot_tag:"Cybersecurity student at ENTI – University of Barcelona, specialising in Cloud Security.",
+  foot_proj:"Projects", foot_menu:"Menu",
+  foot_rights:"All rights reserved."
+}
+};
+
+/* ---------- HABILIDADES ----------
+   tags: cada etiqueta puede ser un string (igual en ambos idiomas)
+   o un objeto { es:"...", en:"..." } si necesita traducción.
+   tags: null => se rellena con SKILLS_SOFT según el idioma */
+const SKILLS = [
+  { title:{es:"Cloud y seguridad cloud",en:"Cloud & cloud security"}, lvl:"learn",
+    tags:["AWS (VPC, EC2, Security Groups, IAM)","Azure","Entra ID","Internet Gateway / Subnetting",{es:"Modelo de responsabilidad compartida",en:"Shared responsibility model"}] },
+  { title:{es:"Administración de sistemas",en:"Systems administration"}, lvl:"pro",
+    tags:["Windows Server 2019/2022","Linux (Debian, Ubuntu, CentOS)","Active Directory","GPO",{es:"Backups y recuperación",en:"Backups & recovery"}] },
+  { title:{es:"Redes y defensa",en:"Networking & defense"}, lvl:"acad",
+    tags:["TCP/IP","Subnetting","VLAN","Routing & Switching","Firewalls (Zone-Based)","IDS (Snort)","VPN"] },
+  { title:{es:"Seguridad ofensiva",en:"Offensive security"}, lvl:"acad",
+    tags:["Kali Linux","Nmap","Wireshark","Metasploit","Hashcat","John the Ripper"] },
+  { title:{es:"Seguridad web",en:"Web security"}, lvl:"acad",
+    tags:["OWASP Top 10","Burp Suite","OWASP ZAP",{es:"Inyecciones / XSS",en:"Injection / XSS"},{es:"Autenticación y sesiones",en:"Authentication & sessions"}] },
+  { title:{es:"Criptografía aplicada",en:"Applied cryptography"}, lvl:"acad",
+    tags:[{es:"Cifrado simétrico (AES)",en:"Symmetric encryption (AES)"},{es:"Cifrado asimétrico (RSA)",en:"Asymmetric encryption (RSA)"},"Hashing",{es:"PKI y certificados",en:"PKI & certificates"},"TLS"] },
+  { title:{es:"Análisis forense / DFIR",en:"Digital forensics / DFIR"}, lvl:"acad",
+    tags:[{es:"Adquisición de evidencias",en:"Evidence acquisition"},{es:"Análisis de discos y memoria",en:"Disk & memory analysis"},{es:"Cadena de custodia",en:"Chain of custody"},{es:"Análisis de artefactos",en:"Artifact analysis"}] },
+  { title:{es:"Programación y scripting",en:"Programming & scripting"}, lvl:"pro",
+    tags:["Python","C / C++","Bash","PowerShell","Git / GitHub"] },
+  { title:{es:"IA y Machine Learning",en:"AI & Machine Learning"}, lvl:"learn",
+    tags:["PyTorch",{es:"CUDA (GPU NVIDIA)",en:"CUDA (NVIDIA GPU)"},{es:"Entrenamiento de modelos",en:"Model training"},{es:"Preparación de datasets",en:"Dataset preparation"}] },
+  { title:{es:"Virtualización y datos",en:"Virtualisation & data"}, lvl:"acad",
+    tags:["VMware","VirtualBox","Proxmox","Docker","MySQL / MariaDB"] },
+  { title:{es:"Cumplimiento normativo",en:"Compliance"}, lvl:"acad",
+    tags:["RGPD / GDPR","LOPDGDD","ENS","CIS Benchmarks"] },
+  { title:{es:"Soporte y comunicación",en:"Support & communication"}, lvl:"pro",
+    tags:null }
+];
+const SKILLS_SOFT = {
+  es:["Help Desk N1/N2","Documentación técnica","Atención al usuario","Trabajo en equipo"],
+  en:["Help Desk L1/L2","Technical documentation","User support","Teamwork"]
+};
+
+/* ---------- RECURSOS ---------- */
+const RESOURCES = [
+  { col:"res_c1", items:[
+    { name:"TryHackMe", url:"https://tryhackme.com", d:{es:"Rutas guiadas de ciberseguridad, ideal para empezar.",en:"Guided cybersecurity paths, ideal starting point."} },
+    { name:"Hack The Box", url:"https://www.hackthebox.com", d:{es:"Máquinas y retos de dificultad realista.",en:"Realistic machines and challenges."} },
+    { name:"PortSwigger Web Security Academy", url:"https://portswigger.net/web-security", d:{es:"El mejor recurso gratuito de seguridad web.",en:"The best free web security resource."} },
+    { name:"OverTheWire", url:"https://overthewire.org/wargames/", d:{es:"Wargames para dominar Linux y la terminal.",en:"Wargames to master Linux and the terminal."} },
+    { name:"LetsDefend", url:"https://letsdefend.io", d:{es:"Práctica de analista SOC con alertas reales.",en:"SOC analyst practice with realistic alerts."} }
+  ]},
+  { col:"res_c2", items:[
+    { name:"flaws.cloud", url:"http://flaws.cloud", d:{es:"Retos clásicos de seguridad en AWS.",en:"Classic AWS security challenges."} },
+    { name:"CloudGoat", url:"https://github.com/RhinoSecurityLabs/cloudgoat", d:{es:"Entornos AWS vulnerables por diseño.",en:"Vulnerable-by-design AWS environments."} },
+    { name:"Pwned Labs", url:"https://pwnedlabs.io", d:{es:"Laboratorios de seguridad cloud (AWS, Azure, GCP).",en:"Cloud security labs (AWS, Azure, GCP)."} },
+    { name:"HackTricks Cloud", url:"https://cloud.hacktricks.wiki", d:{es:"Referencia de técnicas de pentesting cloud.",en:"Cloud pentesting techniques reference."} },
+    { name:"Microsoft Learn", url:"https://learn.microsoft.com/training/", d:{es:"Preparación gratuita de AZ-900, SC-900 y más.",en:"Free prep for AZ-900, SC-900 and beyond."} }
+  ]},
+  { col:"res_c3", items:[
+    { name:"OWASP", url:"https://owasp.org", d:{es:"Estándares y proyectos de seguridad de aplicaciones.",en:"Application security standards and projects."} },
+    { name:"MITRE ATT&CK", url:"https://attack.mitre.org", d:{es:"Marco de tácticas y técnicas de adversarios.",en:"Adversary tactics and techniques framework."} },
+    { name:"INCIBE-CERT", url:"https://www.incibe.es/incibe-cert", d:{es:"Avisos y guías del CERT nacional español.",en:"Advisories and guides from Spain's national CERT."} },
+    { name:"CTFtime", url:"https://ctftime.org", d:{es:"Calendario mundial de competiciones CTF.",en:"Worldwide CTF competition calendar."} },
+    { name:"CIS Benchmarks", url:"https://www.cisecurity.org/cis-benchmarks", d:{es:"Guías de configuración segura por tecnología.",en:"Secure configuration guides per technology."} }
+  ]}
+];
+
+/* ---------- RENDER ---------- */
+let lang = "es";
+let activeFilter = "all";
+
+function t(key){ return I18N[lang][key] || key; }
+
+function applyI18n(){
+  document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = t(el.dataset.i18n); });
+  document.documentElement.lang = lang;
+  document.getElementById("btnEs").classList.toggle("active", lang==="es");
+  document.getElementById("btnEn").classList.toggle("active", lang==="en");
+}
+
+function renderFilters(){
+  const cats = [["all","f_all"],["cloud","f_cloud"],["blue","f_blue"],["dev","f_dev"],["ml","f_ml"]];
+  document.getElementById("filters").innerHTML = cats.map(([c,k]) =>
+    `<button class="${c===activeFilter?'active':''}" onclick="setFilter('${c}')">${t(k)}</button>`).join("");
+}
+
+function setFilter(c){ activeFilter = c; renderFilters(); renderProjects(); }
+
+function renderProjects(){
+  const catKey = {cloud:"f_cloud",blue:"f_blue",dev:"f_dev",ml:"f_ml"};
+  const stKey = {planned:"st_planned",progress:"st_progress",done:"st_done"};
+  const list = PROJECTS.filter(p => activeFilter==="all" || p.cat===activeFilter);
+  document.getElementById("projGrid").innerHTML = list.map(p => `
+    <article class="proj${p.featured ? " featured" : ""}">
+      <div class="proj-top">
+        <span class="proj-cat">${p.featured ? `<span class="feat-tag">${t("feat_lbl")}</span>` : ""}${t(catKey[p.cat])}</span>
+        <span class="badge ${p.status}">${t(stKey[p.status])}</span>
+      </div>
+      <h3>${p.title[lang]}</h3>
+      <p>${p.desc[lang]}</p>
+      <div class="tech">${p.tech.map(x=>`<span>${x}</span>`).join("")}</div>
+      <div class="links">${p.repo
+        ? `<a href="${p.repo}" target="_blank" rel="noopener">${t("repo_link")}</a>`
+        : `<span class="soon">${t("repo_soon")}</span>`}</div>
+    </article>`).join("");
+}
+
+function renderSkills(){
+  const lvlKey = {pro:"lvl_pro",acad:"lvl_acad",learn:"lvl_learn"};
+  document.getElementById("skillGrid").innerHTML = SKILLS.map(s => `
+    <div class="skill-box reveal in">
+      <h3>${s.title[lang]}</h3>
+      <div class="lvl">${t(lvlKey[s.lvl])}</div>
+      <div class="tags">${(s.tags || SKILLS_SOFT[lang]).map(x=>`<span>${typeof x==="object" ? x[lang] : x}</span>`).join("")}</div>
+    </div>`).join("");
+}
+
+function renderRoadmap(){
+  const steps = [["road1t","road1d"],["road2t","road2d"],["road3t","road3d"],["road4t","road4d"]];
+  document.getElementById("roadmap").innerHTML = steps.map((s,i) => `
+    <div class="step">
+      <div class="n">${t("step_lbl")} ${String(i+1).padStart(2,"0")}</div>
+      <h4>${t(s[0])}</h4><p>${t(s[1])}</p>
+    </div>`).join("");
+}
+
+function renderResources(){
+  document.getElementById("resGrid").innerHTML = RESOURCES.map(c => `
+    <div class="res-col reveal in">
+      <h3>${t(c.col)}</h3>
+      <ul>${c.items.map(i => `
+        <li><a href="${i.url}" target="_blank" rel="noopener">${i.name}</a><p>${i.d[lang]}</p></li>`).join("")}
+      </ul>
+    </div>`).join("");
+}
+
+function setLang(l){
+  lang = l;
+  applyI18n(); renderFilters(); renderProjects(); renderSkills(); renderRoadmap(); renderResources();
+}
+
+/* ---------- FONDO ANIMADO: red de nodos ---------- */
+(function(){
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const canvas = document.getElementById("net");
+  const ctx = canvas.getContext("2d");
+  let W, H, nodes = [], mouse = {x:-999,y:-999};
+
+  function resize(){
+    const r = canvas.parentElement.getBoundingClientRect();
+    W = canvas.width = r.width; H = canvas.height = r.height;
+    const count = Math.min(70, Math.floor(W*H/16000));
+    nodes = Array.from({length:count}, () => ({
+      x: Math.random()*W, y: Math.random()*H,
+      vx:(Math.random()-.5)*.35, vy:(Math.random()-.5)*.35
+    }));
+  }
+
+  /* Colores de la red según el tema activo */
+  function palette(){
+    return document.documentElement.dataset.theme === "dark"
+      ? { line:"91,200,232", node:"rgba(47,168,204,.5)", near:"rgba(91,200,232,.9)", lineAlpha:.14 }
+      : { line:"14,94,115",  node:"rgba(14,94,115,.45)", near:"rgba(31,162,196,.85)", lineAlpha:.16 };
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    const pal = palette();
+    for(const n of nodes){
+      n.x+=n.vx; n.y+=n.vy;
+      if(n.x<0||n.x>W) n.vx*=-1;
+      if(n.y<0||n.y>H) n.vy*=-1;
+    }
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        const a=nodes[i], b=nodes[j];
+        const d=Math.hypot(a.x-b.x,a.y-b.y);
+        if(d<130){
+          ctx.strokeStyle=`rgba(${pal.line},${(1-d/130)*pal.lineAlpha})`;
+          ctx.lineWidth=1;
+          ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+        }
+      }
+      const n=nodes[i];
+      const dm=Math.hypot(n.x-mouse.x,n.y-mouse.y);
+      const near=dm<140;
+      ctx.fillStyle = near ? pal.near : pal.node;
+      ctx.beginPath(); ctx.arc(n.x,n.y,near?2.6:1.8,0,Math.PI*2); ctx.fill();
+    }
+    if(!reduced) requestAnimationFrame(draw);
+  }
+  window.redrawNet = () => { if(reduced) draw(); };
+
+  window.addEventListener("resize", resize);
+  canvas.parentElement.addEventListener("mousemove", e => {
+    const r = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
+  });
+  canvas.parentElement.addEventListener("mouseleave", () => { mouse.x=-999; mouse.y=-999; });
+  resize(); draw();
+})();
+
+/* ---------- SCROLL REVEAL ---------- */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+},{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+/* ---------- MENU MOVIL ---------- */
+document.getElementById("menuBtn").addEventListener("click", () => {
+  document.getElementById("navLinks").classList.toggle("open");
+});
+document.querySelectorAll("#navLinks a").forEach(a =>
+  a.addEventListener("click", () => document.getElementById("navLinks").classList.remove("open")));
+
+/* ---------- MODO OSCURO / CLARO ---------- */
+document.getElementById("themeBtn").addEventListener("click", () => {
+  const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  document.documentElement.dataset.theme = next;
+  localStorage.setItem("theme", next);
+  if(window.redrawNet) window.redrawNet();
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+setLang("es");
+</script>
+</body>
+</html>

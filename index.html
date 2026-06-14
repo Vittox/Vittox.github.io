@@ -520,7 +520,7 @@ footer{border-top:1px solid var(--line);padding:48px 0 0;background:var(--surfac
           <span><span class="lab">Email</span><br><span class="val">vicaqu.lobby@gmail.com</span></span>
           <span class="arrow">&#8599;</span>
         </a>
-        <a class="c-row" href="https://www.linkedin.com/in/victor-castro-quesada-90307829b/" target="_blank" rel="noopener">
+        <a class="c-row" href="https://www.linkedin.com/in/victor-castro-quesada/" target="_blank" rel="noopener">
           <span class="c-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></span>
           <span><span class="lab">LinkedIn</span><br><span class="val">Victor Castro Quesada</span></span>
           <span class="arrow">&#8599;</span>
@@ -547,7 +547,7 @@ footer{border-top:1px solid var(--line);padding:48px 0 0;background:var(--surfac
         <div class="name">Victor <span>Castro</span></div>
         <p data-i18n="foot_tag"></p>
         <div class="foot-social">
-          <a href="https://www.linkedin.com/in/victor-castro-quesada-90307829b/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/victor-castro-quesada/" target="_blank" rel="noopener" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
           </a>
           <a href="https://github.com/Vittox" target="_blank" rel="noopener" aria-label="GitHub">
@@ -605,53 +605,93 @@ footer{border-top:1px solid var(--line);padding:48px 0 0;background:var(--surfac
 const PROJECTS = [
   {
     cat: "cloud", status: "progress", featured: true,
-    title: { es: "Arquitectura segura en AWS: VPC, EC2 y Security Groups", en: "Secure AWS architecture: VPC, EC2 and Security Groups" },
+    title: { es: "Auditoría de seguridad en AWS con Terraform y Prowler", en: "AWS security audit with Terraform and Prowler" },
     desc: {
-      es: "Mi proyecto principal actual: diseño y despliegue de una cuenta de AWS con una VPC y una subred pública donde corre una instancia EC2, envuelta en un Security Group que actúa como firewall de instancia con reglas de mínima exposición. Todo el conjunto vive dentro de una región y se conecta a Internet a través de un Internet Gateway como único punto de entrada. El objetivo es documentar paso a paso una línea base de red segura en la nube.",
-      en: "My current flagship project: design and deployment of an AWS account with a VPC and a public subnet running an EC2 instance, wrapped in a Security Group acting as an instance-level firewall with least-exposure rules. Everything lives inside a single region and reaches the Internet through an Internet Gateway as the only entry point. The goal is to document a secure cloud network baseline step by step."
+      es: "Mi proyecto principal, en curso: despliego infraestructura en AWS con Terraform (VPC, subred pública, EC2, Internet Gateway y Security Groups con mínimo privilegio) y la audito de forma automatizada con Prowler y ScoutSuite. Detecto malas configuraciones (IAM, S3, Security Groups), documento los hallazgos por nivel de riesgo y entrego una versión remediada del código.",
+      en: "My main project, in progress: I deploy AWS infrastructure with Terraform (VPC, public subnet, EC2, Internet Gateway and least-privilege Security Groups) and audit it automatically with Prowler and ScoutSuite. I detect misconfigurations (IAM, S3, Security Groups), document findings by risk level and ship a remediated version of the code."
     },
-    tech: ["AWS", "VPC", "EC2", "Security Groups", "Internet Gateway", "Subnetting"],
-    repo: "https://github.com/Vittox/aws-vpc-security-lab"
+    tech: ["AWS", "Terraform", "Prowler", "ScoutSuite", "IAM", "Checkov"],
+    repo: "https://github.com/Vittox/aws-security-audit"
+  },
+  {
+    cat: "cloud", status: "planned",
+    title: { es: "SIEM cloud-native con IA", en: "Cloud-native SIEM with AI" },
+    desc: {
+      es: "Pipeline serverless en AWS (CloudTrail → Kinesis → Lambda → SNS → Slack) con un modelo de machine learning que detecta anomalías en los logs en tiempo real y dispara alertas automáticas. Arquitectura event-driven cercana a un sistema de seguridad real.",
+      en: "Serverless AWS pipeline (CloudTrail → Kinesis → Lambda → SNS → Slack) with a machine-learning model that detects log anomalies in real time and triggers automatic alerts. An event-driven architecture close to a real security system."
+    },
+    tech: ["AWS", "Lambda", "Kinesis", "Python", "scikit-learn", "Terraform"],
+    repo: "https://github.com/Vittox/cloud-native-siem-ai"
+  },
+  {
+    cat: "cloud", status: "planned",
+    title: { es: "Arquitectura Zero Trust en Azure", en: "Zero Trust architecture on Azure" },
+    desc: {
+      es: "Implementación de un modelo Zero Trust en Azure: Entra ID, Conditional Access con MFA, Microsoft Defender for Cloud y Microsoft Sentinel como SIEM/SOAR con un playbook de respuesta automatizada. Perfil multi-cloud orientado al sector regulado europeo (NIS2/DORA).",
+      en: "A Zero Trust model on Azure: Entra ID, Conditional Access with MFA, Microsoft Defender for Cloud and Microsoft Sentinel as SIEM/SOAR with an automated response playbook. A multi-cloud profile aimed at the European regulated sector (NIS2/DORA)."
+    },
+    tech: ["Azure", "Entra ID", "Sentinel", "Defender for Cloud", "Conditional Access", "Terraform"],
+    repo: "https://github.com/Vittox/azure-zero-trust-lab"
   },
   {
     cat: "blue", status: "planned",
-    title: { es: "Mini Zone-Based Firewall", en: "Mini zone-based firewall" },
+    title: { es: "SIEM con ELK Stack", en: "SIEM with the ELK Stack" },
     desc: {
-      es: "Implementación a pequeña escala de un firewall por zonas: segmentación de la red en zonas (LAN, WAN, DMZ), políticas de tráfico entre zonas e inspección de paquetes, con la configuración y los casos de prueba documentados.",
-      en: "Small-scale zone-based firewall implementation: network segmentation into zones (LAN, WAN, DMZ), inter-zone traffic policies and packet inspection, with documented configuration and test cases."
+      es: "Monitorización de seguridad con Elasticsearch, Logstash y Kibana: centralizo los logs de un laboratorio de máquinas virtuales y construyo dashboards y reglas de alerta que detectan ataques como un brute-force por SSH.",
+      en: "Security monitoring with Elasticsearch, Logstash and Kibana: I centralise logs from a VM lab and build dashboards and alert rules that detect attacks such as SSH brute-forcing."
     },
-    tech: ["Firewall", "LAN / WAN / DMZ", "ACL", "Networking"],
-    repo: "https://github.com/Vittox/mini-zone-based-firewall"
+    tech: ["ELK Stack", "Elasticsearch", "Kibana", "Logstash", "Docker", "SIEM"],
+    repo: "https://github.com/Vittox/elk-siem-lab"
   },
   {
     cat: "blue", status: "planned",
-    title: { es: "Sistema IDS con Snort", en: "IDS with Snort" },
+    title: { es: "Hardening de seguridad en Kubernetes", en: "Kubernetes security hardening" },
     desc: {
-      es: "Despliegue de un sistema de detección de intrusiones con Snort: escritura de reglas personalizadas, detección de escaneos y ataques comunes sobre tráfico de laboratorio y análisis de las alertas generadas.",
-      en: "Intrusion detection system built with Snort: custom rule writing, detection of scans and common attacks on lab traffic, and analysis of the generated alerts."
+      es: "Cluster k3s que ataco con kube-hunter y audito con kube-bench (CIS Benchmark) para luego endurecerlo: RBAC con mínimo privilegio, Network Policies, Pod Security, control de admisión (OPA/Kyverno) y detección en runtime con Falco. Con informe del antes y el después.",
+      en: "A k3s cluster I attack with kube-hunter and audit with kube-bench (CIS Benchmark), then harden: least-privilege RBAC, Network Policies, Pod Security, admission control (OPA/Kyverno) and runtime detection with Falco. With a before/after report."
     },
-    tech: ["Snort", "IDS", "PCAP", "Linux"],
-    repo: "https://github.com/Vittox/snort-ids-lab"
+    tech: ["Kubernetes", "k3s", "kube-bench", "OPA/Kyverno", "Falco", "Trivy"],
+    repo: "https://github.com/Vittox/k8s-hardening-lab"
   },
   {
-    cat: "dev", status: "planned",
-    title: { es: "Sistema de autenticación seguro (JWT + roles)", en: "Secure authentication system (JWT + roles)" },
+    cat: "ml", status: "planned",
+    title: { es: "Detección de intrusiones en red con Machine Learning", en: "Network intrusion detection with Machine Learning" },
     desc: {
-      es: "API con registro e inicio de sesión seguros: tokens JWT firmados, control de acceso basado en roles (RBAC), almacenamiento de contraseñas con hashing robusto y defensas frente a los fallos de autenticación del OWASP Top 10.",
-      en: "API with secure sign-up and login: signed JWT tokens, role-based access control (RBAC), strong password hashing and defences against OWASP Top 10 authentication flaws."
+      es: "Clasificador de tráfico de red (XGBoost / Random Forest) entrenado con el dataset CICIDS2017 para distinguir tráfico normal de ataques (DDoS, fuerza bruta, PortScan, botnet). Comparo el enfoque por IA con la detección por firmas tipo Snort.",
+      en: "A network traffic classifier (XGBoost / Random Forest) trained on the CICIDS2017 dataset to tell normal traffic from attacks (DDoS, brute force, PortScan, botnet). I compare the ML approach with signature-based detection like Snort."
     },
-    tech: ["JWT", "RBAC", "REST API", "OWASP"],
-    repo: "https://github.com/Vittox/secure-auth-jwt"
+    tech: ["Python", "XGBoost", "scikit-learn", "Pandas", "CICIDS2017"],
+    repo: "https://github.com/Vittox/ml-network-ids"
   },
   {
-    cat: "ml", status: "progress",
-    title: { es: "Entrenamiento de modelos de lenguaje con PyTorch", en: "Language model training with PyTorch" },
+    cat: "ml", status: "planned",
+    title: { es: "Detección de anomalías en logs de AWS (CloudTrail)", en: "Anomaly detection in AWS logs (CloudTrail)" },
     desc: {
-      es: "Entrenamiento de modelos de lenguaje (LM) con PyTorch acelerado por GPU NVIDIA: preparación de datasets, bucles de entrenamiento sobre CUDA, ajuste de hiperparámetros y evaluación de los modelos resultantes.",
-      en: "Language model (LM) training with PyTorch accelerated on NVIDIA GPUs: dataset preparation, CUDA training loops, hyperparameter tuning and evaluation of the resulting models."
+      es: "Machine learning no supervisado (Isolation Forest / Autoencoder) sobre logs de AWS CloudTrail para detectar comportamientos anómalos: escaladas de privilegios, accesos a horas o regiones inusuales. De las detecciones derivo reglas accionables.",
+      en: "Unsupervised machine learning (Isolation Forest / Autoencoder) over AWS CloudTrail logs to detect anomalous behaviour: privilege escalation, access at unusual times or regions. I derive actionable rules from the detections."
     },
-    tech: ["Python", "PyTorch", "CUDA", "NVIDIA GPU"],
-    repo: "https://github.com/Vittox/pytorch-lm-training"
+    tech: ["Python", "scikit-learn", "Pandas", "CloudTrail", "Isolation Forest"],
+    repo: "https://github.com/Vittox/cloudtrail-anomaly-detection"
+  },
+  {
+    cat: "ml", status: "planned",
+    title: { es: "Detector de phishing con BERT", en: "Phishing detector with BERT" },
+    desc: {
+      es: "Fine-tuning de un transformer (BERT) para clasificar URLs y correos como legítimos o phishing, con evaluación rigurosa (F1, ROC-AUC) y despliegue del modelo como API para clasificar en vivo.",
+      en: "Fine-tuning a transformer (BERT) to classify URLs and emails as legitimate or phishing, with rigorous evaluation (F1, ROC-AUC) and deployment of the model as an API for live classification."
+    },
+    tech: ["Python", "PyTorch", "HuggingFace", "BERT", "FastAPI"],
+    repo: "https://github.com/Vittox/phishing-detector-bert"
+  },
+  {
+    cat: "ml", status: "planned",
+    title: { es: "Framework de Red Teaming para LLMs", en: "LLM Red Teaming Framework" },
+    desc: {
+      es: "Herramienta que ataca modelos de lenguaje (jailbreaks, prompt injection) de forma automatizada, clasifica las respuestas comprometidas y genera un informe de vulnerabilidades alineado con el OWASP Top 10 for LLMs. Modelos open source en local con Ollama.",
+      en: "A tool that attacks language models (jailbreaks, prompt injection) automatically, classifies compromised responses and generates a vulnerability report aligned with the OWASP Top 10 for LLMs. Open-source models running locally with Ollama."
+    },
+    tech: ["Python", "Ollama", "PyRIT", "Garak", "LangChain", "LLM Security"],
+    repo: "https://github.com/Vittox/llm-red-team-framework"
   }
 ];
 
@@ -673,8 +713,8 @@ es: {
   about_p3:"Busco prácticas o una primera posición en ciberseguridad o administración de sistemas con foco en seguridad, donde aportar una base poco habitual en un perfil junior: sistemas, redes, trato con usuarios y documentación rigurosa.",
   about_now_title:"En qué estoy ahora",
   about_now1:"Empezando 3er curso del Grado en Ciberseguridad en ENTI – Universitat de Barcelona, tras completar 2º",
-  about_now2:"Proyecto principal: arquitectura segura en AWS — una VPC con subred pública y una instancia EC2 protegida por un Security Group, con un Internet Gateway como único punto de entrada a la región",
-  about_now3:"Publicando gradualmente mis proyectos reales en GitHub: firewall por zonas, IDS con Snort, autenticación con JWT y entrenamiento de modelos con PyTorch",
+  about_now2:"Proyecto principal en curso: auditoría de seguridad en AWS — despliego la infraestructura con Terraform y la audito con Prowler para detectar y remediar malas configuraciones",
+  about_now3:"Hoja de ruta hacia Cloud Security + IA: SIEM cloud-native, Zero Trust en Azure, hardening de Kubernetes, detección de amenazas con machine learning y red teaming de LLMs",
   about_now4:"Preparando las certificaciones AZ-900 / SC-900 y practicando en TryHackMe y Hack The Box",
   exp_title:"Trayectoria",
   exp_tag_it:"IT", exp_tag_retail:"Retail",
@@ -697,7 +737,7 @@ es: {
   proj_title:"Proyectos",
   proj_sub:"Proyectos reales de mi GitHub que voy añadiendo gradualmente al portfolio a medida que avanzan. Cada repositorio incluye documentación, decisiones técnicas y lecciones aprendidas.",
   f_all:"Todos", f_cloud:"Cloud Security", f_blue:"Defensa y redes", f_dev:"Desarrollo seguro", f_ml:"IA / ML",
-  st_planned:"Planificado", st_progress:"En curso", st_done:"Completado",
+  st_planned:"Pendiente", st_progress:"En curso", st_done:"Completado",
   feat_lbl:"Proyecto principal",
   repo_link:"Ver en GitHub", repo_soon:"Próximamente en GitHub",
   skills_title:"Habilidades técnicas",
@@ -740,8 +780,8 @@ en: {
   about_p3:"I am looking for an internship or a first role in cybersecurity or security-focused systems administration, where I can bring an unusual combination for a junior profile: systems, networking, user-facing experience and rigorous documentation.",
   about_now_title:"What I'm working on",
   about_now1:"Starting the 3rd year of the Cybersecurity degree at ENTI – University of Barcelona, after completing the 2nd",
-  about_now2:"Flagship project: secure AWS architecture — a VPC with a public subnet and an EC2 instance protected by a Security Group, with an Internet Gateway as the single entry point into the region",
-  about_now3:"Gradually publishing my real projects on GitHub: zone-based firewall, Snort IDS, JWT authentication and model training with PyTorch",
+  about_now2:"Main project in progress: AWS security audit — I deploy the infrastructure with Terraform and audit it with Prowler to detect and remediate misconfigurations",
+  about_now3:"Roadmap towards Cloud Security + AI: cloud-native SIEM, Zero Trust on Azure, Kubernetes hardening, ML-based threat detection and LLM red teaming",
   about_now4:"Preparing the AZ-900 / SC-900 certifications and practising on TryHackMe and Hack The Box",
   exp_title:"Background",
   exp_tag_it:"IT", exp_tag_retail:"Retail",
@@ -764,7 +804,7 @@ en: {
   proj_title:"Projects",
   proj_sub:"Real projects from my GitHub, added gradually to the portfolio as they progress. Each repository includes documentation, technical decisions and lessons learned.",
   f_all:"All", f_cloud:"Cloud Security", f_blue:"Defense & networks", f_dev:"Secure development", f_ml:"AI / ML",
-  st_planned:"Planned", st_progress:"In progress", st_done:"Completed",
+  st_planned:"Pending", st_progress:"In progress", st_done:"Completed",
   feat_lbl:"Flagship project",
   repo_link:"View on GitHub", repo_soon:"Coming soon on GitHub",
   skills_title:"Technical skills",
@@ -867,7 +907,7 @@ function applyI18n(){
 }
 
 function renderFilters(){
-  const cats = [["all","f_all"],["cloud","f_cloud"],["blue","f_blue"],["dev","f_dev"],["ml","f_ml"]];
+  const cats = [["all","f_all"],["cloud","f_cloud"],["blue","f_blue"],["ml","f_ml"]];
   document.getElementById("filters").innerHTML = cats.map(([c,k]) =>
     `<button class="${c===activeFilter?'active':''}" onclick="setFilter('${c}')">${t(k)}</button>`).join("");
 }
@@ -1014,3 +1054,4 @@ setLang("es");
 </script>
 </body>
 </html>
+
